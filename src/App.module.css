@@ -1,0 +1,119 @@
+:root {
+  --shadow-color: 217deg 32% 59%;
+  --shadow-elevation: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.36),
+    0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.36),
+    2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.36),
+    5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.36);
+}
+
+.pic {
+  width: 220px;
+  height: 200px;
+  object-fit: cover;
+}
+
+body {
+  background-color: #e5efff;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 420px;
+}
+
+.card {
+  position: absolute;
+  height: 350px;
+  width: 200px;
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  top: 0;
+  box-shadow: var(--shadow-elevation);
+  border-radius: 10px;
+}
+
+.buttons {
+  flex: 0 0 100px;
+  text-align: center;
+}
+
+.buttons button {
+  border-radius: 50%;
+  line-height: 60px;
+  width: 60px;
+  border: 0;
+  display: inline-block;
+  margin: 0 8px;
+  transition: box-shadow 0.3s ease; /* Add this line */
+}
+
+/* Add a hover effect to change the box-shadow */
+.buttons button:hover {
+  box-shadow: var(--); /* Example shadow */
+}
+
+.buttons i {
+  font-size: 32px;
+  vertical-align: middle;
+}
+
+.button {
+  box-shadow: none;
+  transition: box-shadow 0.2s ease-in;
+}
+
+button:hover {
+  box-shadow: var(--shadow-elevation);
+  transition: box-shadow 0.2s ease-in;
+}
+
+.acceptButton {
+  background: rgb(242, 35, 101);
+  color: white;
+}
+
+.rejectButton {
+  background: rgb(35, 242, 128);
+  color: white;
+}
+
+.cardHeading {
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.card .rating {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.cardSummary {
+  margin-top: 0;
+  padding-bottom: 3.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
