@@ -31,7 +31,7 @@ const animationVariants = {
   }),
 };
 
-const Card: React.FC<CardProps> = ({ card, action }) => {
+export const Card: React.FC<CardProps> = ({ card, action }) => {
   return (
     <motion.div
       key={card.id}
