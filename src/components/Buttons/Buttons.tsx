@@ -19,9 +19,9 @@ const Button: React.FC<ButtonProps> = ({ type, onClick }) => {
       onClick={onClick}
     >
       {type === "accept" ? (
-        <X style={{ marginBottom: -7 }} />
-      ) : (
         <Heart style={{ marginBottom: -8 }} />
+      ) : (
+        <X style={{ marginBottom: -7 }} />
       )}
       <VisuallyHidden>{type}</VisuallyHidden>
     </button>
@@ -31,8 +31,8 @@ const Button: React.FC<ButtonProps> = ({ type, onClick }) => {
 const Buttons: React.FC<ButtonsProps> = ({ onActionClick }) => {
   return (
     <div className={styles.buttons}>
-      <Button type="accept" onClick={() => onActionClick("yes")} />
       <Button type="reject" onClick={() => onActionClick("no")} />
+      <Button type="accept" onClick={() => onActionClick("yes")} />
     </div>
   );
 };

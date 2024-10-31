@@ -19,6 +19,7 @@ interface CardDeckProps {
 interface CardProps {
   card: CardType;
   action: "yes" | "no" | null;
+  handleActionClick: (action: "yes" | "no") => void; 
 }
 
 const animationVariants = {
@@ -26,12 +27,13 @@ const animationVariants = {
   animate: { opacity: 1 },
   exit: (action: string) => ({
     opacity: 0,
-    x: action === "yes" ? -500 : 500,
-    rotate: action === "yes" ? -45 : 40,
+    x: action === "yes" ? 500 : -500, 
+    rotate: action === "yes" ? 45 : -45, 
   }),
 };
 
-export const Card: React.FC<CardProps> = ({ card, action }) => {
+
+export const Card: React.FC<CardProps> = ({ card, action, handleActionClick }) => {
   return (
     <motion.div
       key={card.id}
@@ -42,6 +44,20 @@ export const Card: React.FC<CardProps> = ({ card, action }) => {
       custom={action}
       variants={animationVariants}
       transition={{ duration: 0.3 }}
+      drag="x"
+      dragConstraints={{ left: 0, right: 0 }}
+      onDragEnd={(event, info) => {
+        const offsetX = info.offset.x;
+
+        
+        if (offsetX < -100) {
+          handleActionClick("no"); 
+        } 
+        // dobra w poleceniu było żeby tylko odrzucać można było swipem, ale gdyby jednak okazało się że akceptować też można to uncomment
+        // else if (offsetX > 100) {
+        //   handleActionClick("yes"); 
+        // }
+      }}
     >
       <img
         className={styles.pic}
@@ -58,18 +74,21 @@ export const Card: React.FC<CardProps> = ({ card, action }) => {
   );
 };
 
-const CardDeck: React.FC<CardDeckProps> = ({ cards, action }) => {
+
+const CardDeck: React.FC<CardDeckProps & { handleActionClick: (action: "yes" | "no") => void }> = ({ cards, action, handleActionClick }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.cards}>
         <AnimatePresence>
           {cards.slice(0, 1).map((card) => (
-            <Card key={card.id} card={card} action={action} />
+            <Card key={card.id} card={card} action={action} handleActionClick={handleActionClick} />
           ))}
         </AnimatePresence>
       </div>
     </div>
   );
 };
+
+
 
 export default CardDeck;

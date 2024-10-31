@@ -53,7 +53,7 @@ const App: React.FC = () => {
     // Ta częśc do wymiany
     setTimeout(() => {
       setCards((prevCards) => prevCards.slice(1));
-      setAction(null); // Reset after animation
+      setAction(null); 
     }, 0);
 
     // Gdyby backend istniał to powyżej należałby zamienić na ten fragment
@@ -72,7 +72,7 @@ const App: React.FC = () => {
     //   console.error("Error updating recommendation:", error);
     // } finally {
     //   setTimeout(() => {
-    //     setAction(null); // Reset after animation
+    //     setAction(null); 
     //   }, 300);
     // }
   };
@@ -81,9 +81,10 @@ const App: React.FC = () => {
     <div className={styles.App}>
       <h1>Movie Tinder</h1>
       {cards.length ? <p>To go: {cards.length}</p> : <p>That's all folks!</p>}
-      <CardDeck cards={cards} action={action} />
+      <CardDeck cards={cards} action={action} handleActionClick={handleActionClick} />
       {cards.length ? <Buttons onActionClick={handleActionClick} /> : null}
     </div>
   );
+  
 }
 export default App

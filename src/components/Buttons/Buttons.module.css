@@ -28,12 +28,12 @@
   transition: box-shadow 0.2s ease-in;
 }
 
-.acceptButton {
+.rejectButton {
   background: rgb(242, 35, 101);
   color: white;
 }
 
-.rejectButton {
+.acceptButton {
   background: rgb(35, 242, 128);
   color: white;
 }
