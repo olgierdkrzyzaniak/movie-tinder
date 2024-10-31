@@ -46,7 +46,7 @@ export const Card: React.FC<CardProps> = ({ card, action, handleActionClick }) =
       transition={{ duration: 0.3 }}
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
-      onDragEnd={(event, info) => {
+      onDragEnd={(_, info) => {
         const offsetX = info.offset.x;
 
         
