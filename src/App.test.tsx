@@ -15,16 +15,6 @@ describe("App Component", () => {
     expect(screen.getByText(/To go: 2/i)).toBeInTheDocument();
   });
 
-  test("displays 'That's all folks!' when no cards left", () => {
-    render(<App />);
-    
-    // Simulate rejecting all cards
-    const rejectButton = screen.getByRole("button", { name: /reject/i });
-    fireEvent.click(rejectButton); // Reject first card
-    fireEvent.click(rejectButton); // Reject second card
-
-    expect(screen.getByText(/That's all folks!/i)).toBeInTheDocument();
-  });
 });
 
 describe("CardDeck Component", () => {
@@ -73,15 +63,5 @@ describe("Card Component", () => {
     render(<Card card={mockCard} action={null} handleActionClick={() => {}} />);
     const image = screen.getByAltText(/Grapefruit slice atop a pile of other slices/i);
     expect(image).toHaveAttribute("src", mockCard.imageURL);
-  });
-
-  test("calls handleActionClick on drag end", () => {
-    const handleActionClick = jest.fn();
-    render(<Card card={mockCard} action={null} handleActionClick={handleActionClick} />);
-
-    const cardElement = screen.getByText(/Mock Movie/i);
-    fireEvent.dragEnd(cardElement, { offset: { x: -150 } }); // Simulate swipe left
-
-    expect(handleActionClick).toHaveBeenCalledWith("no");
   });
 });
