@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "./App";
 import CardDeck, { Card } from "./components/CardDeck";
 import Buttons from "./components/Buttons";
